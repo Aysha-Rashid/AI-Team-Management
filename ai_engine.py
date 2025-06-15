@@ -1,8 +1,17 @@
+from novita_client import NovitaClient
+from team_composer import TeamComposer, TeamConstraints
 from typing import Dict, List, Optional
 from dataclasses import dataclass
-import numpy as np
 from datetime import datetime
-from team_composer import TeamComposer, TeamConstraints
+import numpy as np
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+config = {
+    "NOVITA_API_KEY": os.getenv("NOVITA_API_KEY")  # Not a nested dict
+}
 
 @dataclass
 class ProjectRequirement:
@@ -20,8 +29,8 @@ class ProjectRequirement:
 class TeamFormationEngine:
     def __init__(self, config: Dict):
         self.config = config
-        self.vector_store = None  # Milvus client
-        self.llm_client = None    # Novita.ai client
+        self.vector_store = None
+        self.llm_client = NovitaClient(config['NOVITA_API_KEY'])
         self.team_composer = TeamComposer(config)
 
     def generate_role_vector(self, requirement: ProjectRequirement) -> List[float]:

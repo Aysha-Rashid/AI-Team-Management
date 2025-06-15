@@ -72,7 +72,7 @@ if __name__ == "__main__":
             'sap': {'api_key': 'YOUR_KEY'},
             'oracle': {'api_key': 'YOUR_KEY'}
         },
-        'novita_ai': {'api_key': 'YOUR_KEY'},
+        'novita_ai': {'api_key': 'sk_HLLVkOXU0z_FlKPx9_D2Jt1R0IME_AWz075iMdRtZTM'},
         'milvus': {
             'host': 'localhost',
             'port': 19530
